@@ -12,7 +12,7 @@ n = np.arange(0,N,1)
 w = np.arange(-math.pi,math.pi,(2*math.pi/N))
 #w = np.array([w,math.pi])
 f = w*fs/(2*math.pi)
-#señal cosenoidal
+#señal solenoidal
 signal = np.cos(2.*math.pi*k*n/N)
 fourier = np.fft.fft(signal)
 fourier_mejor = np.fft.fftshift(fourier)
