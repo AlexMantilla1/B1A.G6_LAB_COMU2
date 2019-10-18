@@ -1,0 +1,1 @@
+analog.GR_SIN_WAVE
