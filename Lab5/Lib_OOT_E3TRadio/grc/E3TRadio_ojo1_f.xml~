@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<block>
+  <name>ojo1_f</name>
+  <key>E3TRadio_ojo1_f</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.ojo1_f($samp_rate, $desliz, $Ymin, $Ymax, $Sps)</make>
+  <callback>set_desliz($desliz)</callback>
+
+  <param>
+    <name>sample rate (Hz)</name>
+    <key>samp_rate</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>desliz (m)</name>
+    <key>desliz</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Ymin</name>
+    <key>Ymin</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Ymax</name>
+    <key>Ymax</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>muestras x simb</name>
+    <key>Sps</key>
+    <type>int</type>
+  </param>
+
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+</block>

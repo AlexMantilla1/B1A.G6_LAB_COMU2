@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<block>
+  <name>power_meter_cf</name>
+  <key>E3TRadio_power_meter</key>
+  <category>[E3TRadio]</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.power_meter($reset)</make>
+  <callback>set_reset($reset)</callback>
+  <param>
+    <name>reset</name>
+    <key>reset</key>
+    <type>int</type>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

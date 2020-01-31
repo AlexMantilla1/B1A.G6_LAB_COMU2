@@ -1,0 +1,10 @@
+INSTRUCCIONES
+
+Estas son las instrucciones para instalar o reinstalar OOT_E3TRadio en gnuradio
+
+Busca la carpeta build en la raiz. Si tiene cosas bórralas. Si no existe, creela. 
+Finalmente, realiza la instalación por terminal, ubicado dentro de la carpeta buid con los siguientes comandos:
+cmake ..
+make
+sudo make install
+sudo ldconfig

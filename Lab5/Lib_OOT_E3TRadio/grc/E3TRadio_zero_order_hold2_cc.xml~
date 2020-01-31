@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<block>
+  <name>zeroh2_cc</name>
+  <key>E3TRadio_zero_order_hold2_cc</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.zero_order_hold2_cc($k)</make>
+
+ <callback>set_retardo($k)</callback>
+
+  <param>
+    <name>hold time</name>
+    <key>k</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>

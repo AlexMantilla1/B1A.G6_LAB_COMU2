@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<block>
+  <name>amplificador_ff</name>
+  <key>E3TRadio_amplificador_ff</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.amplificador_ff($Kamp)</make>
+  <callback>set_ka($Kamp)</callback>
+
+  <param>
+    <name>Coefiente de amplificacion</name>
+    <key>Kamp</key>
+    <type>float</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

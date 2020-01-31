@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<block>
+  <name>zeroh_bb</name>
+  <key>E3TRadio_zero_order_hold_bb</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.zero_order_hold_bb($k)</make>
+
+ <callback>set_retardo($k)</callback>
+  
+  <param>
+    <name>Time hold</name>
+    <key>k</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+</block>

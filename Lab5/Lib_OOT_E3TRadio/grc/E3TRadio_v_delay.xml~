@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<block>
+  <name>v_delay</name>
+  <key>E3TRadio_v_delay</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.v_delay($N, $M)</make>
+  <callback>set_delay($M)</callback>
+
+  <param>
+    <name>N</name>
+    <key>N</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>M</name>
+    <key>M</key>
+    <type>int</type>
+  </param>
+
+  
+  <sink>
+    <name>in</name>
+    <type>float</type>
+    <vlen>$N</vlen>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

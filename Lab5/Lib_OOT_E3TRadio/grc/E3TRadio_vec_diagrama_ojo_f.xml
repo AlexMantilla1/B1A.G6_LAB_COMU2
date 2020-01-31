@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<block>
+  <name>vec_diagrama_ojo_f</name>
+  <key>E3TRadio_vec_diagrama_ojo_f</key>
+  <category>[E3TRadio]</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.vec_diagrama_ojo_f($Sps, $samp_rate, $N)</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>Sps</name>
+    <key>Sps</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>N</name>
+    <key>N</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>samp_rate</name>
+    <key>samp_rate</key>
+    <type>float</type>
+  </param>
+
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>float</type>
+    <vlen>$N</vlen>
+  </sink>
+</block>

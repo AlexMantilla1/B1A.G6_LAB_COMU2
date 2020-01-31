@@ -1,0 +1,11 @@
+This a gnuradio OOT
+You have to have installed gnuradio library to be able to install this OOT. OOT as complements for gnuradio library
+
+INSTRUCCIONES
+
+Busca la carpeta build en la raiz. Si tiene cosas bórralas. Si no existe, creela. 
+Finalmente, realiza la instalación por terminal, ubicado dentro de la carpeta buid con los siguientes comandos:
+cmake ..
+make
+sudo make install
+sudo ldconfig

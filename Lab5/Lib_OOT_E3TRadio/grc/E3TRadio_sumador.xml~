@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<block>
+
+<!-- El nombre del bloque, es el que aparecerá en el GRC. Uno puede cambiarlo aquí  -->
+  <name>sumador</name>
+
+  <key>E3TRadio_sumador</key>
+
+  <!-- La categoria es donde aparecerá clasificado el bloque dentro del GRC
+       uno puede cambiar esa ubicación aquí  -->
+  <category>E3TRadio</category>
+
+  <import>import E3TRadio</import>
+  <make>E3TRadio.sumador()</make>
+ 
+  <!-- Configuración de entradas -->
+  <!-- name: creo que se puede cambiar, creo que es algo aparece escrito en el bloque en GRC -->
+  <sink>
+    <name>in1</name>
+    <type>float</type>
+  </sink>
+  <sink>
+    <name>in2</name>
+    <type>float</type>
+  </sink>
+
+  <!-- Configuración de salidas -->
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
