@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<block>
+  <name>vector_average_hob</name>
+  <key>E3TRadio_vector_average_hob</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.vector_average_hob($N, $Nensayos)</make>
+  
+  <param>
+    <name>vector length</name>
+    <key>N</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Number of trials</name>
+    <key>Nensayos</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+    <vlen>$N</vlen>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+    <vlen>$N</vlen>
+  </source>
+</block>

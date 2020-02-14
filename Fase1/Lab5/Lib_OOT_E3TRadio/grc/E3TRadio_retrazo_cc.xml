@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<block>
+  <name>retrazo_cc</name>
+  <key>E3TRadio_retrazo_cc</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.retrazo_cc($Rmax, $R)</make>
+  <callback>set_retardo($R)</callback>
+
+  <param>  
+  <name>Retardo_max</name>
+    <key>Rmax</key>
+    <type>int</type>
+  </param>
+
+  <param>
+  <name>El_retardo</name>
+    <key>R</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>

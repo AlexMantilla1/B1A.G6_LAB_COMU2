@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<block>
+  <name>delay_hob</name>
+  <key>E3TRadio_delay_hob_ff</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.delay_hob_ff($N, $M)</make>
+  <callback>set_delay($M)</callback>
+  
+  <param>
+    <name>Delaymax</name>
+    <key>N</key>
+    <type>int</type>
+  </param>
+  <param>
+
+    <name>Delay</name>
+    <key>M</key>
+    <type>int</type>
+  </param>
+
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

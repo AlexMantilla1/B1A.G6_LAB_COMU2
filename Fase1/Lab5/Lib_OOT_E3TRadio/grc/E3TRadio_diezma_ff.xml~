@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<block>
+  <name>diez</name>
+  <key>E3TRadio_diezma_ff</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.diezma_ff($N, $M)</make>
+
+  <param>
+    <name>N</name>
+    <key>N</key>
+    <value>8</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>M</name>
+    <key>M</key>
+    <value>0</value>
+    <type>int</type>
+  </param>
+
+
+  <check>$N &gt; 0 </check>  
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

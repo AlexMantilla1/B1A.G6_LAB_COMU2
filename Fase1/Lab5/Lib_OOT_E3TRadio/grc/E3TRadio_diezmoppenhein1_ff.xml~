@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<block>
+  <name>diezmoppenhein1_ff</name>
+  <key>E3TRadio_diezmoppenhein1_ff</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.diezmoppenhein1_ff($paso, $MuestraInicio)</make>
+  <callback>set_ka($MuestraInicio)</callback>
+
+  <param>
+    <name>Paso</name>
+    <key>paso</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Retrazo</name>
+    <key>MuestraInicio</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+   <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

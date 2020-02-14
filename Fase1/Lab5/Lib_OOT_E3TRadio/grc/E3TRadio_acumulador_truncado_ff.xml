@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<block>
+  <name>accum</name>
+  <key>E3TRadio_acumulador_truncado_ff</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.acumulador_truncado_ff($N,$M)</make>
+  <callback>set_ka($M)</callback>
+
+  <param>
+    <name>N</name>
+    <key>N</key>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>M</name>
+    <key>M</key>
+    <type>int</type>
+  </param>
+
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

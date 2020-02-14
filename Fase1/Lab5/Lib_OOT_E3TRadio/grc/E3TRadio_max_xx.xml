@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<block>
+  <name>N vector max</name>
+  <key>E3TRadio_max_xx</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+
+<!-- El metodo que se invoca, cuando el bloque se pone en funcionamiento, está
+ condicionado al tipo de entrada  que elija el usuario -->
+
+  <make>#if $tipo() == "complex"         <!-- tipo es el parametro definido más abajo ?  -->
+E3TRadio.max_cc($vec_long, $n_entradas)  <!-- vec_long es el parametro definido más abajo ?  -->
+#else
+E3TRadio.max_ff($vec_long, $n_entradas)
+#end if</make>
+
+<!-- los parámetros para seleccionar el tipo  -->
+  
+  <param>
+    <name>tipo de entrada</name>
+    <key>tipo</key>
+    <type>enum</type>
+        <option>
+            <name>float</name>
+            <key>float</key>
+        </option>
+
+        <option>
+            <name>complex</name>
+            <key>complex</key>
+        </option>
+  </param>
+
+<!-- los parámetros la longitud del vector  -->
+
+  <param>
+    <name>longitud del vector</name>
+    <key>vec_long</key>
+    <value>1024</value> <!--Value siempre va debajo de key, si no, hay error-->
+    <type>int</type>
+  </param>
+
+<!-- los parámetros para definir el número de entradas  -->
+
+  <param>
+    <name>Numero de entradas</name>
+    <key>n_entradas</key>
+    <value>2</value>
+    <type>int</type>
+  </param>
+
+<!-- Creación y configuración de una salida  --> 
+ 
+  <sink>
+    <name>in</name>
+    <type>$tipo</type>
+    <vlen>$vec_long</vlen> <!--Es aquí donde se decide que la salida es vectorial-->
+    <nports>$n_entradas</nports>
+  </sink>
+
+<!-- Creación y configuración de una entrada al bloque  --> 
+
+  <source>
+    <name>out</name>
+    <type>$tipo</type>
+    <vlen>$vec_long</vlen> <!--Es aquí donde se decide que la entrada es vectorial-->
+  </source>
+</block>

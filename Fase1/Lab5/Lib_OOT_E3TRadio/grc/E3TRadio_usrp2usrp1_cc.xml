@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<block>
+  <name>usrp2usrp1_cc</name>
+  <key>E3TRadio_usrp2usrp1_cc</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.usrp2usrp1_cc($samp_rate, $Am, $Toffset, $Foffset, $Vruido, $Katt, $Phoffset, $BW)</make>
+  <callback>set_Vruido($Vruido)</callback>
+  <callback>set_Toffset($Toffset)</callback>
+  <callback>set_Phoffset($Phoffset)</callback>
+  <callback>set_Foffset($Foffset)</callback>
+  <callback>set_Katt($Katt)</callback>
+  <callback>set_BW($BW)</callback>
+
+  <param>
+    <name>Atenuacion</name>
+    <key>Katt</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Ancho de banda (Hz)</name>
+    <key>BW</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Nivel de ruido (V)</name>
+    <key>Vruido</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Offset Fase (Radian)</name>
+    <key>Phoffset</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Offset Frec. (Hz)</name>
+    <key>Foffset</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Offset tiempo (muestras)</name>
+    <key>Toffset</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Amplitud de entrada</name>
+    <key>Am</key>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Frec. muestreo (Hz)</name>
+    <key>samp_rate</key>
+    <type>float</type>
+  </param>
+
+   <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>

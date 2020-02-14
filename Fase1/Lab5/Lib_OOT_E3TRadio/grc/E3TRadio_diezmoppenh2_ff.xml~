@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<block>
+  <name>diezmoppenh2_ff</name>
+  <key>E3TRadio_diezmoppenh2_ff</key>
+  <category>E3TRadio</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.diezmoppenh2_ff($paso, $Minicio)</make>
+  <callback>set_ka($Minicio)</callback>
+
+   <param>
+    <name>Paso</name>
+    <key>paso</key>
+    <type>int</type>
+  </param>
+
+   <param>
+    <name>Minicio</name>
+    <key>Minicio</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

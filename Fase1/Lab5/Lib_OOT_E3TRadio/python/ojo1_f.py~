@@ -1,0 +1,176 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# 
+# Copyright 2016 <+YOU OR YOUR COMPANY+>.
+# 
+
+
+from PyQt4 import Qt
+from gnuradio import blocks
+from gnuradio import eng_notation
+from gnuradio import gr
+from gnuradio import qtgui
+from gnuradio.eng_option import eng_option
+from gnuradio.filter import firdes
+from optparse import OptionParser
+import sip
+import sys
+
+
+class ojo1_f(gr.hier_block2):
+    """
+    Grafica el diagrama de OjO. Sps: el numero de muestras que tiene cada simbolo o bit al cual desea observar el diagrama de ojo; desliz. (muestras) es una facilidad incluida para que el usuario pueda mover el ojo para que quede bien centrado; Ymin, Ymax: amplitudes pico que puede alcanzar la senal; samp_rate: (Hz) es la rata de muestreo de la senal a graficar. Hecho por Homero Ortega, Universidad Industrial de Santander
+    """
+    def __init__(self, samp_rate, desliz, Ymin, Ymax, Sps):
+        gr.hier_block2.__init__(self,
+            "ojo1_f",
+            gr.io_signature(1, 1, gr.sizeof_float),  # Input signature
+            gr.io_signature(1, 1, gr.sizeof_float)) # Output signature
+
+        ##################################################
+        # Variables
+        ##################################################
+        self.samp_rate = samp_rate
+        self.desliz = 0
+        self.Ymin = Ymin
+        self.Ymax = Ymax
+        self.Sps = Sps
+
+        ##################################################
+        # Blocks
+        ##################################################
+        self.qtgui_time_sink_x_0_0_0 = qtgui.time_sink_f(
+        	int(Sps*2), #size
+        	samp_rate, #samp_rate
+        	"", #name
+        	10 #number of inputs
+        )
+        self.qtgui_time_sink_x_0_0_0.set_update_time(1)
+        self.qtgui_time_sink_x_0_0_0.set_y_axis(Ymin, Ymax)
+        
+        self.qtgui_time_sink_x_0_0_0.set_y_label("Diagrama de Ojo", "")
+        
+        self.qtgui_time_sink_x_0_0_0.enable_tags(-1, True)
+        self.qtgui_time_sink_x_0_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
+        self.qtgui_time_sink_x_0_0_0.enable_autoscale(False)
+        self.qtgui_time_sink_x_0_0_0.enable_grid(False)
+        self.qtgui_time_sink_x_0_0_0.enable_control_panel(True)
+        
+        if not False:
+          self.qtgui_time_sink_x_0_0_0.disable_legend()
+        
+        labels = ["", "", "", "", "",
+                  "", "", "", "", ""]
+        widths = [3, 3, 3, 3, 3,
+                  3, 3, 3, 3, 3]
+        colors = ["red", "red", "red", "red", "red",
+                  "red", "red", "red", "red", "red"]
+        styles = [1, 1, 1, 1, 1,
+                  1, 1, 1, 1, 1]
+        markers = [-1, -1, -1, -1, -1,
+                   -1, -1, -1, -1, -1]
+        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
+                  1.0, 1.0, 1.0, 1.0, 1.0]
+        
+        for i in xrange(10):
+            if len(labels[i]) == 0:
+                self.qtgui_time_sink_x_0_0_0.set_line_label(i, "Data {0}".format(i))
+            else:
+                self.qtgui_time_sink_x_0_0_0.set_line_label(i, labels[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_width(i, widths[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_color(i, colors[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_style(i, styles[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_marker(i, markers[i])
+            self.qtgui_time_sink_x_0_0_0.set_line_alpha(i, alphas[i])
+        
+        self._qtgui_time_sink_x_0_0_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0_0_0.pyqwidget(), Qt.QWidget)
+        self.top_layout.addWidget(self._qtgui_time_sink_x_0_0_0_win)
+#        self.blocks_null_source_0 = blocks.null_source(gr.sizeof_float*1)
+        self.blocks_delay_0_6 = blocks.delay(gr.sizeof_float*1, Sps*9)
+        self.blocks_delay_0_5 = blocks.delay(gr.sizeof_float*1, Sps*7)
+        self.blocks_delay_0_4 = blocks.delay(gr.sizeof_float*1, Sps*6)
+        self.blocks_delay_0_3_0_0 = blocks.delay(gr.sizeof_float*1, desliz)
+        self.blocks_delay_0_3_0 = blocks.delay(gr.sizeof_float*1, Sps*8)
+        self.blocks_delay_0_3 = blocks.delay(gr.sizeof_float*1, Sps*5)
+        self.blocks_delay_0_2 = blocks.delay(gr.sizeof_float*1, Sps*4)
+        self.blocks_delay_0_1 = blocks.delay(gr.sizeof_float*1, Sps*3)
+        self.blocks_delay_0_0 = blocks.delay(gr.sizeof_float*1, Sps*2)
+        self.blocks_delay_0 = blocks.delay(gr.sizeof_float*1, Sps)
+
+        ##################################################
+        # Connections
+        ##################################################
+        self.connect((self.blocks_delay_0, 0), (self.qtgui_time_sink_x_0_0_0, 1))    
+        self.connect((self.blocks_delay_0_0, 0), (self.qtgui_time_sink_x_0_0_0, 2))    
+        self.connect((self.blocks_delay_0_1, 0), (self.qtgui_time_sink_x_0_0_0, 3))    
+        self.connect((self.blocks_delay_0_2, 0), (self.qtgui_time_sink_x_0_0_0, 4))    
+        self.connect((self.blocks_delay_0_3, 0), (self.qtgui_time_sink_x_0_0_0, 5))    
+        self.connect((self.blocks_delay_0_3_0, 0), (self.qtgui_time_sink_x_0_0_0, 8))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.blocks_delay_0, 0))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.blocks_delay_0_0, 0))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.blocks_delay_0_1, 0))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.blocks_delay_0_2, 0))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.blocks_delay_0_3, 0))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.blocks_delay_0_3_0, 0))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.blocks_delay_0_4, 0))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.blocks_delay_0_5, 0))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.blocks_delay_0_6, 0))    
+        self.connect((self.blocks_delay_0_3_0_0, 0), (self.qtgui_time_sink_x_0_0_0, 9))    
+        self.connect((self.blocks_delay_0_4, 0), (self.qtgui_time_sink_x_0_0_0, 6))    
+        self.connect((self.blocks_delay_0_5, 0), (self.qtgui_time_sink_x_0_0_0, 7))    
+        self.connect((self.blocks_delay_0_6, 0), (self.qtgui_time_sink_x_0_0_0, 0))    
+#        self.connect((self.blocks_null_source_0, 0), (self.blocks_delay_0_3_0_0, 0))    
+        self.connect(self, (self.blocks_delay_0_3_0_0, 0))    
+
+    def closeEvent(self, event):
+        self.settings = Qt.QSettings("GNU Radio", "Ojo_hier")
+        self.settings.setValue("geometry", self.saveGeometry())
+        event.accept()
+
+
+    def get_samp_rate(self):
+        return self.samp_rate
+
+    def set_samp_rate(self, samp_rate):
+        self.samp_rate = samp_rate
+        self.qtgui_time_sink_x_0_0_0.set_samp_rate(self.samp_rate)
+
+    def get_desliz(self):
+        return self.desliz
+
+    def set_desliz(self, desliz):
+        self.desliz = desliz
+        self.blocks_delay_0_3_0_0.set_dly(self.desliz)
+
+    def get_Ymin(self):
+        return self.Ymin
+
+    def set_Ymin(self, Ymin):
+        self.Ymin = Ymin
+        self.qtgui_time_sink_x_0_0_0.set_y_axis(self.Ymin, self.Ymax)
+
+    def get_Ymax(self):
+        return self.Ymax
+
+    def set_Ymax(self, Ymax):
+        self.Ymax = Ymax
+        self.qtgui_time_sink_x_0_0_0.set_y_axis(self.Ymin, self.Ymax)
+
+    def get_Sps(self):
+        return self.Sps
+
+    def set_Sps(self, Sps):
+        self.Sps = Sps
+        self.blocks_delay_0.set_dly(self.Sps)
+        self.blocks_delay_0_0.set_dly(self.Sps*2)
+        self.blocks_delay_0_1.set_dly(self.Sps*3)
+        self.blocks_delay_0_2.set_dly(self.Sps*4)
+        self.blocks_delay_0_3.set_dly(self.Sps*5)
+        self.blocks_delay_0_4.set_dly(self.Sps*6)
+        self.blocks_delay_0_5.set_dly(self.Sps*7)
+        self.blocks_delay_0_6.set_dly(self.Sps*9)
+        self.blocks_delay_0_3_0.set_dly(self.Sps*8)
+
+
+
+

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<block>
+  <name>mean_meter_ff</name>
+  <key>E3TRadio_mean_meter</key>
+  <category>[E3TRadio]</category>
+  <import>import E3TRadio</import>
+  <make>E3TRadio.mean_meter($reset)</make>
+  <callback>set_reset($reset)</callback>
+  <param>
+    <name>reset</name>
+    <key>reset</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
